@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  app:
+    build: .
+    networks:
+      - kafka_broker-kafka
+    container_name: simulator
+    volumes:
+      - .:/home/guipalm4/go/src/:rw
+      - ./.docker/zsh/history:/home/go/zsh:rw
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+networks:
+  kafka_broker-kafka:
+    external: true
